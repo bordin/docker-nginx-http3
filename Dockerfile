@@ -2,16 +2,16 @@
 ARG NGINX_VERSION=1.23.4
 
 # https://hg.nginx.org/nginx-quic/shortlog/quic
-ARG NGINX_COMMIT=0af598651e33
+ARG NGINX_COMMIT=8057e053480a
 
 # https://github.com/google/ngx_brotli
 ARG NGX_BROTLI_COMMIT=6e975bcb015f62e1f303054897783355e2a877dc
 
 # https://github.com/google/boringssl
-ARG BORINGSSL_COMMIT=8ce0e1c14e48109773f1e94e5f8b020aa1e24dc5
+ARG BORINGSSL_COMMIT=c215ce7e8230786e0d4ec463d95a9e44af513e6a
 
 # http://hg.nginx.org/njs
-ARG NJS_COMMIT=b33aae5e8dc6
+ARG NJS_COMMIT=a1faa64d4972
 
 # https://github.com/openresty/headers-more-nginx-module#installation
 # we want to have https://github.com/openresty/headers-more-nginx-module/commit/e536bc595d8b490dbc9cf5999ec48fca3f488632
@@ -74,7 +74,7 @@ ARG CONFIG="\
 		--add-dynamic-module=/usr/src/ngx_http_geoip2_module \
 	"
 
-FROM alpine:3.16 AS base
+FROM alpine:3.17 AS base
 
 ARG NGINX_VERSION
 ARG NGINX_COMMIT
@@ -199,7 +199,7 @@ RUN \
 			| xargs -r apk info --installed \
 			| sort -u > /tmp/runDeps.txt
 
-FROM alpine:3.16
+FROM alpine:3.17
 ARG NGINX_VERSION
 ARG NGINX_COMMIT
 

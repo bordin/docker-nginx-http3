@@ -1,3 +1,7 @@
+## fork from macbre/docker-nginx-http3
+* Update docker alpine to 3.17
+* update nginx-quic /boring ssl / njs to latest
+
 ## What is this?
 [![Docker Image CI](https://github.com/macbre/docker-nginx-http3/actions/workflows/dockerimage.yml/badge.svg)](https://github.com/macbre/docker-nginx-http3/actions/workflows/dockerimage.yml)
 
