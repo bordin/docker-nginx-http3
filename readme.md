@@ -15,12 +15,7 @@ As this project is based on the official [nginx image](https://hub.docker.com/_/
 ```
 docker pull bordin/nginx-http3-brotli:latest
 ```
-
-You can fetch an image from [Github Containers Registry](https://github.com/macbre/docker-nginx-brotli/pkgs/container/nginx-http3) as well:
-
-```
-docker pull bordin/nginx-http3-brotli
-```
+ 
 
 ## What's inside
 
