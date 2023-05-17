@@ -13,13 +13,13 @@ nginx binary is built from [`quic` experimental branch](https://hg.nginx.org/ngi
 As this project is based on the official [nginx image](https://hub.docker.com/_/nginx/) look for instructions there. In addition to the standard configuration directives, you'll be able to use the brotli module specific ones, see [here for official documentation](https://github.com/google/ngx_brotli#configuration-directives)
 
 ```
-docker pull macbre/nginx-http3:latest
+docker pull bordin/nginx-http3-brotli:latest
 ```
 
 You can fetch an image from [Github Containers Registry](https://github.com/macbre/docker-nginx-brotli/pkgs/container/nginx-http3) as well:
 
 ```
-docker pull ghcr.io/macbre/nginx-http3:latest
+docker pull bordin/nginx-http3-brotli
 ```
 
 ## What's inside
@@ -31,67 +31,15 @@ docker pull ghcr.io/macbre/nginx-http3:latest
 * [`njs` module](https://nginx.org/en/docs/njs/) - a subset of the JavaScript language that allows extending nginx functionality
 
 ```
-$ docker run -it macbre/nginx-http3 nginx -V
-nginx version: nginx/1.23.4 (quic-0af598651e33-boringssl-8ce0e1c14e48109773f1e94e5f8b020aa1e24dc5)
-built by gcc 11.2.1 20220219 (Alpine 11.2.1_git20220219) 
+$ docker run -it nginx-http3-brotli nginx -V
+nginx version: nginx/1.23.4 (quic-8057e053480a-boringssl-c215ce7e8230786e0d4ec463d95a9e44af513e6a)
+built by gcc 12.2.1 20220924 (Alpine 12.2.1_git20220924-r4) 
 built with OpenSSL 1.1.1 (compatible; BoringSSL) (running with BoringSSL)
 TLS SNI support enabled
-configure arguments: 
-	--build=quic-0af598651e33-boringssl-8ce0e1c14e48109773f1e94e5f8b020aa1e24dc5 
-	--prefix=/etc/nginx 
-	--sbin-path=/usr/sbin/nginx 
-	--modules-path=/usr/lib/nginx/modules 
-	--conf-path=/etc/nginx/nginx.conf 
-	--error-log-path=/var/log/nginx/error.log 
-	--http-log-path=/var/log/nginx/access.log 
-	--pid-path=/var/run/nginx.pid 
-	--lock-path=/var/run/nginx.lock 
-	--http-client-body-temp-path=/var/cache/nginx/client_temp 
-	--http-proxy-temp-path=/var/cache/nginx/proxy_temp 
-	--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp 
-	--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp 
-	--http-scgi-temp-path=/var/cache/nginx/scgi_temp 
-	--user=nginx 
-	--group=nginx 
-	--with-http_ssl_module 
-	--with-http_realip_module 
-	--with-http_addition_module 
-	--with-http_sub_module 
-	--with-http_dav_module 
-	--with-http_flv_module 
-	--with-http_mp4_module 
-	--with-http_gunzip_module 
-	--with-http_gzip_static_module 
-	--with-http_random_index_module 
-	--with-http_secure_link_module 
-	--with-http_stub_status_module 
-	--with-http_auth_request_module 
-	--with-http_xslt_module=dynamic 
-	--with-http_image_filter_module=dynamic 
-	--with-http_geoip_module=dynamic 
-	--with-http_perl_module=dynamic 
-	--with-threads 
-	--with-stream 
-	--with-stream_ssl_module 
-	--with-stream_ssl_preread_module 
-	--with-stream_realip_module 
-	--with-stream_geoip_module=dynamic 
-	--with-http_slice_module 
-	--with-mail 
-	--with-mail_ssl_module 
-	--with-compat 
-	--with-file-aio 
-	--with-http_v2_module 
-	--with-http_v3_module 
-	--add-module=/usr/src/ngx_brotli 
-	--add-module=/usr/src/headers-more-nginx-module-0.34 
-	--add-module=/usr/src/njs/nginx 
-	--add-dynamic-module=/usr/src/ngx_http_geoip2_module 
-	--with-cc-opt=-I../boringssl/include 
-	--with-ld-opt='-L../boringssl/build/ssl -L../boringssl/build/crypto'
+configure arguments: --build=quic-8057e053480a-boringssl-c215ce7e8230786e0d4ec463d95a9e44af513e6a --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_stub_status_module --with-http_auth_request_module --with-http_xslt_module=dynamic --with-http_image_filter_module=dynamic --with-http_geoip_module=dynamic --with-http_perl_module=dynamic --with-threads --with-stream --with-stream_ssl_module --with-stream_ssl_preread_module --with-stream_realip_module --with-stream_geoip_module=dynamic --with-http_slice_module --with-mail --with-mail_ssl_module --with-compat --with-file-aio --with-http_v2_module --with-http_v3_module --add-module=/usr/src/ngx_brotli --add-module=/usr/src/headers-more-nginx-module-0.34 --add-module=/usr/src/njs/nginx --add-dynamic-module=/usr/src/ngx_http_geoip2_module --with-cc-opt=-I../boringssl/include --with-ld-opt='-L../boringssl/build/ssl -L../boringssl/build/crypto'
 
-$ docker run -it macbre/nginx-http3 njs -v
-0.7.7
+$ docker run -it bordin/nginx-http3-brotli njs -v
+0.7.12
 ```
 
 ## SSL Grade A+ handling
@@ -102,7 +50,7 @@ Please refer to [Mozilla's SSL Configuration Generator](https://ssl-config.mozil
     ssl_dhparam /etc/ssl/dhparam.pem;
 ```
 
-See [ssllabs.com test results for wbc.macbre.net](https://www.ssllabs.com/ssltest/analyze.html?d=wbc.macbre.net).
+ 
 
 ## nginx config files includes
 
@@ -148,12 +96,4 @@ server {
 ```
 
 Refer to `run-docker.sh` script on how to run this container and properly mount required config files and assets.
-
-## Development
-
-Building an image:
-
-```
-docker pull ghcr.io/macbre/nginx-http3:latest
-DOCKER_BUILDKIT=1 docker build . -t macbre/nginx --cache-from=ghcr.io/macbre/nginx-http3:latest --progress=plain
-```
+ 
